@@ -1,4 +1,3 @@
-import os
 import logging
 from fastapi import FastAPI
 from app.api import ping, summaries
@@ -10,7 +9,9 @@ log = logging.getLogger(__name__)
 def create_application() -> FastAPI:
     application = FastAPI()
     application.include_router(ping.router)
-    application.include_router(summaries.router, prefix="/summaries", tags=["summaries"])
+    application.include_router(
+        summaries.router, prefix="/summaries", tags=["summaries"]
+    )
 
     return application
 
@@ -22,4 +23,3 @@ app = create_application()
 async def startup_event():
     log.info("Starting up...")
     init_db(app)
-
