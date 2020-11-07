@@ -1,4 +1,6 @@
-env
-.dockerignore
+.pytest_cache
+/env
+/htmlcov
+.coverage
 Dockerfile
 Dockerfile.prod

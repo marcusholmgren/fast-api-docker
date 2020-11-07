@@ -19,10 +19,7 @@ COPY ./requirements.txt .
 RUN pip install -r requirements.txt
 
 # add app
-COPY ./app .
-COPY ./tests .
-COPY .coveragerc .
-COPY setup.cfg .
+COPY . .
 
 # run entrypoint.sh
 ENTRYPOINT ["/usr/src/app/entrypoint.sh"]

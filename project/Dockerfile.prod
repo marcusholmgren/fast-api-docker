@@ -30,10 +30,7 @@ COPY ./requirements.txt .
 RUN pip install -r requirements.txt
 
 # add app
-COPY ./app ./app
-COPY ./tests .
-COPY .coveragerc .
-COPY setup.cfg .
+COPY . .
 
 # chown all the files to the app user
 RUN chown -R app:app $APP_HOME
