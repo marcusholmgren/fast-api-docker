@@ -1,8 +1,6 @@
-# fast-api-docker
+# Test-Driven Development with FastAPI and Docker
 
-This is my implementation of the project in the  [testdriven.io](https://testdriven.io/) course 
-[Test-Driven Development with FastAPI and Docker](https://testdriven.io/courses/tdd-fastapi/)
-
+![Continuous Integration and Delivery](https://github.com/marcusholmgren/fast-api-docker/workflows/Continuous%20Integration%20and%20Delivery/badge.svg?branch=master)
 
 ## Docker Compose
 
