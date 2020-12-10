@@ -10,13 +10,14 @@ ENV PYTHONUNBUFFERED 1
 
 # install system dependencies
 RUN apt-get update \
-  && apt-get -y install netcat gcc \
-  && apt-get clean
+  && apt-get -y install netcat gcc --no-install-recommends \
+  && apt-get clean \
+  && rm -rf /var/lib/apt/lists/*
 
 # install python dependencies
-RUN pip install --upgrade pip
 COPY ./requirements.txt .
-RUN pip install -r requirements.txt
+RUN pip install --upgrade pip \
+ && pip install -r requirements.txt
 
 # add app
 COPY . .
