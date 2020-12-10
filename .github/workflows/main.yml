@@ -103,7 +103,7 @@ jobs:
         run: docker push ${{ env.HEROKU_REGISTRY_IMAGE }}
       - name: Set environment variables
         run: |
-          echo "name=HEROKU_REGISTRY_IMAGE" >> $HEROKU_REGISTRY_IMAGE
+          echo "name=HEROKU_REGISTRY_IMAGE" >> ${{ env.HEROKU_REGISTRY_IMAGE }}
           echo "name=HEROKU_AUTH_TOKEN" >> ${{ secrets.HEROKU_AUTH_TOKEN }}
       - name: Release
         run: |
