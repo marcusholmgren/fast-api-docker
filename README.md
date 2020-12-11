@@ -9,6 +9,8 @@ Start
 docker-compose up -d --build 
 ```
 
+When the application is started with Docker Compose the REST API is available at [http://localhost:8002/docs](http://localhost:8002/docs)
+
 Stop containers and volumes
 ```
 docker-compose down -v
