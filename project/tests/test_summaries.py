@@ -51,8 +51,7 @@ def test_create_summaries_invalid_json(test_app):
         ]
     }
 
-    response = test_app.post("/summaries/",
-                             data=json.dumps({"url": "invalid://url"}))
+    response = test_app.post("/summaries/", data=json.dumps({"url": "invalid://url"}))
     assert response.status_code == 422
     assert response.json()["detail"][0]["msg"] == "URL scheme not permitted"
 
@@ -209,7 +208,7 @@ def test_update_summary(test_app_with_db, monkeypatch):
     ],
 )
 def test_update_summary_invalid(
-        test_app_with_db, summary_id, payload, status_code, detail
+    test_app_with_db, summary_id, payload, status_code, detail
 ):
     response = test_app_with_db.put(
         f"/summaries/{summary_id}/", data=json.dumps(payload)
