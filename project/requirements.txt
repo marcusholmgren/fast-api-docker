@@ -3,3 +3,4 @@ pydantic-settings==2.4.0
 uvicorn==0.30.6
 asyncpg==0.29.0
 tortoise-orm==0.21.6
+aerich==0.7.2
