@@ -22,7 +22,7 @@ client.test("Request executed successfully", function() {
 ###
 
 # Test get a specific /summaries/{id}
-GET http://localhost:8002/summaries/1
+GET http://localhost:8002/summaries/5
 
 ###
 
@@ -32,6 +32,100 @@ POST http://localhost:8002/summaries/
 Content-Type: application/json
 
 {
+  "url": "https://www.skandia.se"
+}
+
+###
+
+PUT http://localhost:8002/summaries/2/
+Content-Type: application/json
+
+{
+  "url": "https://testdriven.io",
+  "summary": "super"
+}
+
+###
+
+DELETE http://localhost:8002/summaries/3
+
+###
+
+# test on Heroku
+
+GET https://afternoon-dawn-83140.herokuapp.com/ping
+
+###
+
+# GET all summaries:
+
+GET https://afternoon-dawn-83140.herokuapp.com/summaries/
+
+###
+
+# GET single summary:
+
+GET https://afternoon-dawn-83140.herokuapp.com/summaries/1/
+
+###
+
+# POST a new summary:
+
+POST https://afternoon-dawn-83140.herokuapp.com/summaries/
+Content-Type: application/json
+
+{
   "url": "http://testdriven.io"
 }
 
+###
+
+# PUT update a summary:
+
+PUT https://afternoon-dawn-83140.herokuapp.com/summaries/2/
+Content-Type: application/json
+
+{
+  "url": "https://vilhelminamusik.se",
+  "summary": "super"
+}
+
+###
+
+# DELETE a summary:
+
+DELETE https://afternoon-dawn-83140.herokuapp.com/summaries/2/
+
+
+###
+
+POST http://localhost:8082/persons
+Content-Type: application/json
+
+{
+  "name": "Marcus"
+}
+
+###
+
+GET http://localhost:8082/cars?brand=honda
+
+###
+
+GET http://localhost:8082/cars/4
+
+###
+
+GET http://localhost:8082/cars
+
+###
+
+POST http://localhost:8082/cars
+Content-Type: application/json
+
+  {
+    "make": "volvo",
+    "type": "sedan",
+    "model": "v40",
+    "cost": 23
+  }
