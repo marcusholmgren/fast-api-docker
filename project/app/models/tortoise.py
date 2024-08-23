@@ -1,6 +1,7 @@
 from tortoise import fields, models
 from pydantic import BaseModel
 
+
 class TextSummary(models.Model):
     url = fields.CharField(max_length=200, unique=True)
     summary = fields.TextField()
