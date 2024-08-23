@@ -1,0 +1,20 @@
+@PORT=8004
+
+# /ping
+GET http://localhost:{{PORT}}/ping
+
+###
+
+# /summaries
+POST http://localhost:{{PORT}}/summaries
+Content-Type: application/json
+
+{
+    "url": "https://testdriven.io"
+}
+
+
+###
+
+# /summaries/:id
+GET http://localhost:{{PORT}}/summaries/5
