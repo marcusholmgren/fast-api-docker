@@ -1,4 +1,5 @@
 from tortoise import fields, models
+from pydantic import BaseModel
 
 
 class TextSummary(models.Model):
@@ -8,3 +9,14 @@ class TextSummary(models.Model):
 
     def __str__(self):
         return self.url
+
+
+class SummaryPayloadSchema(BaseModel):
+    url: str
+
+    class Config:
+        schema_extra = {
+            "example": {
+                "url": "https://example.com"
+            }
+        }
