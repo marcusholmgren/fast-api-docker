@@ -1,23 +1,26 @@
-import os
+import logging
+from fastapi import FastAPI
+from contextlib import asynccontextmanager
+from app.api import ping
+from app.db import init_db
 
-from fastapi import FastAPI, Depends
-from app.config import get_settings, Settings
-from tortoise.contrib.fastapi import register_tortoise
+log = logging.getLogger("uvicorn")
 
-app = FastAPI()
 
-register_tortoise(
-    app,
-    db_url=os.environ.get("DATABASE_URL"),
-    modules={"models": ["app.models.tortoise"]},
-    generate_schemas=False,
-    add_exception_handlers=True,
-)
+def create_application() -> FastAPI:
+    application = FastAPI()
+    application.include_router(ping.router)
 
-@app.get("/ping")
-async def pong(settings: Settings = Depends(get_settings)):
-    return {
-        "ping": "pong!",
-        "environment": settings.environment,
-        "testing": settings.testing
-            }
+    return application
+
+
+app = create_application()
+
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    log.info("Starting up...")
+    init_db(app)
+    yield
+    log.info("Shutting down...")
+
