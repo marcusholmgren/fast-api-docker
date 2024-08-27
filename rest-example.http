@@ -18,3 +18,9 @@ Content-Type: application/json
 
 # /summaries/:id
 GET http://localhost:{{PORT}}/summaries/5
+
+###
+
+# /summaries/
+
+GET http://localhost:{{PORT}}/summaries

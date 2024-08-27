@@ -27,3 +27,7 @@ async def get(id: int) -> Union[dict, None]:
     if summary:
         return summary
     return None
+
+
+def get_all():
+    return TextSummary.all().values()
