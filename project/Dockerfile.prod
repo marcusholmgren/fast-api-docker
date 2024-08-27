@@ -1,0 +1,27 @@
+FROM python:alpine
+
+# Install uv.
+COPY --from=ghcr.io/astral-sh/uv:latest /uv /bin/uv
+
+# set environment variables
+ENV UV_COMPILE_BYTECODE=1
+ENV PYTHONDONTWRITEBYTECODE=1
+ENV PYTHONUNBUFFERED=1
+ENV ENVIRONMENT=prod
+ENV TESTING=0
+
+# create directory for the app user
+ENV APP_HOME=/home/web
+RUN mkdir $APP_HOME
+WORKDIR $APP_HOME
+
+# Copy the application into the container.
+COPY . $APP_HOME
+
+# Install the application dependencies.
+WORKDIR $APP_HOME
+# COPY ./requirements.txt .
+RUN uv venv && uv pip install --no-cache -r requirements.txt
+
+# Run the application.
+CMD ["sh", "-c", "/home/web/.venv/bin/fastapi run /home/web/app/main.py --port ${PORT}"]

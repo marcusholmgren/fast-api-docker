@@ -2,3 +2,9 @@ env
 .dockerignore
 Dockerfile
 Dockerfile.prod
+
+/venv
+.coverage
+
+# ignore db folder
+/db

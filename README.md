@@ -28,6 +28,31 @@ Stop the running containers with `docker-compose down` and then remove the stopp
 docker-compose down -v
 ```
 
+### Docker Production
+
+Build the production image
+
+```bash
+docker build -f project/Dockerfile.prod -t fastapi-docker ./project
+```
+
+#### Run the image locally
+
+Run the production image locally with a sqlite in-memory database
+
+```bash
+docker run --name fastapi-docker -e PORT=8765 -e DATABASE_URL=sqlite:///:memory: -p 8002:8765 fastapi-docker:latest
+```
+
+Generate the required tables in the in-memory database. Connect to the running container and run the migrations from the `app/db.py` script.
+
+```bash
+docker exec -it fastapi-docker /bin/sh
+source .venv/bin/activate
+cd app/
+python db.py
+```
+
 ## Components
 
 Tortoise-ORM migrations with [Aerich](https://tortoise.github.io/migration.html)
