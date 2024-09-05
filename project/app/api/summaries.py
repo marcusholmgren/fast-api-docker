@@ -1,5 +1,7 @@
 import logging
+
 from fastapi import APIRouter, HTTPException
+
 from app.api import crud
 from app.models.pydantic import SummaryPayloadSchema, SummaryResponseSchema
 from app.models.tortoise import SummarySchema
@@ -7,6 +9,12 @@ from app.models.tortoise import SummarySchema
 log = logging.getLogger(__name__)
 
 router = APIRouter()
+
+
+@router.get("/", response_model=list[SummarySchema])
+async def read_all_summaries() -> list[SummarySchema]:
+    log.info("Reading all summaries")
+    return await crud.get_all()
 
 
 @router.get("/{id}/", response_model=SummarySchema)

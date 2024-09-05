@@ -22,6 +22,18 @@ Run the tests with `docker-compose exec web pytest`.
 docker-compose exec web python -m pytest
 ```
 
+Run the tests with coverage with [pytest-cov](https://pytest-cov.readthedocs.io/en/latest/index.html).
+
+```bash
+docker-compose exec web python -m pytest --cov="."
+```
+
+Run formatting and linting with [ruff](https://astral.sh/ruff).
+```bash
+docker-compose exec web python -m ruff check
+```
+
+
 Stop the running containers with `docker-compose down` and then remove the stopped containers with `docker-compose rm`.
 
 ```bash
