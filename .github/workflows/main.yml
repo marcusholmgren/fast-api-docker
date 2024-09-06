@@ -68,6 +68,6 @@ jobs:
             -p 5003:8765 \
             ${{ env.IMAGE }}:latest
       - name: Pytest
-        run: docker exec fastapi-tdd python -m pytest .
+        run: docker exec fastapi-tdd python -m /home/web/.venv/bin/pytest .
       - name: ruff
-        run: docker exec fastapi-tdd python -m ruff check
+        run: docker exec fastapi-tdd python -m /home/web/.venv/bin/ruff check
